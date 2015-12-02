@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         async {
             val contacts = RetrieveContacts().execute()
             uiThread {
-                toast("Contacts received")
+                recycler.adapter = ContactsAdapter(contacts)
             }
         }
     }
