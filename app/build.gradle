@@ -26,15 +26,15 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile "com.android.support:appcompat-$support_version"
-    compile "com.android.support:recyclerview-$support_version"
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:recyclerview-v7:$support_version"
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile "org.jetbrains.anko:anko-sdk15:$anko_version"
     compile "org.jetbrains.anko:anko-support-v4:$anko_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 buildscript {
-    ext.support_version = 'v7:23.1.1'
+    ext.support_version = '23.1.1'
     ext.anko_version = '0.7.3'
     ext.kotlin_version = '1.0.0-beta-2423'
     repositories {
