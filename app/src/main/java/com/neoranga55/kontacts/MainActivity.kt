@@ -6,11 +6,10 @@ import android.support.v7.widget.GridLayoutManager
 import org.jetbrains.anko.async
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
-import kotlinx.android.synthetic.activity_main.*
+import kotlinx.android.synthetic.activity_main.recycler
 import org.jetbrains.anko.ctx
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         async {
             val contacts = RetrieveContacts().execute()
             uiThread {
+                toast("Loading contacts")
                 recycler.adapter = ContactsAdapter(contacts)
             }
         }

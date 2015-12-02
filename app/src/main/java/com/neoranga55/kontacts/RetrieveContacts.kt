@@ -5,5 +5,3 @@ class RetrieveContacts {
         return (1..10).map { Contact("Contact $it", "http://lorempixel.com/400/400/people/$it") }
     }
 }
-
-

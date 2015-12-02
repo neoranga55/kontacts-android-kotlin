@@ -11,5 +11,5 @@ fun ViewGroup.inflate(layoutRes: Int, attachToRoot: Boolean = false): View {
 }
 
 fun ImageView.loadUrl(url: String) {
-    Picasso.with(context).load(url).fit().into(this)
+    Picasso.with(context).load(url).into(this)
 }
