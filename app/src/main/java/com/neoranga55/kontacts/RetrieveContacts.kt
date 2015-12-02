@@ -7,15 +7,15 @@ import org.jetbrains.anko.db.parseList
 
 class RetrieveContacts {
 
-    private class RawContacts(val name: String?, val imageUrl: String?)
+    private class RawContact(val name: String?, val imageUrl: String?)
 
     fun execute(ctx: Context): List<Contact> {
 //        Fake contact images
 //        return (1..10).map { Contact("Contact $it", "http://lorempixel.com/400/400/people/$it") }
         val contacts = ctx.contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null)
-        val parsedContact = contacts.parseList(object : MapRowParser<RawContacts> {
-            override fun parseRow(columns: Map<String, Any>): RawContacts {
-                return RawContacts(columns[ContactsContract.Contacts.DISPLAY_NAME] as? String,
+        val parsedContact = contacts.parseList(object : MapRowParser<RawContact> {
+            override fun parseRow(columns: Map<String, Any>): RawContact {
+                return RawContact(columns[ContactsContract.Contacts.DISPLAY_NAME] as? String,
                         columns[ContactsContract.Contacts.PHOTO_URI] as? String)
             }
         })

@@ -22,4 +22,3 @@ class DetailActivity : AppCompatActivity() {
         contactImage.loadUrl(intent.getStringExtra(EXTRA_IMAGE))
     }
 }
-
