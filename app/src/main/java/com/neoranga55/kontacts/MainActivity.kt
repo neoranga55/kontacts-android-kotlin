@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // Anko asynchronous
         async {
-            val contacts = RetrieveContacts().execute()
+            val contacts = RetrieveContacts().execute(ctx)
             uiThread {
                 recycler.adapter = ContactsAdapter(contacts, { navigateToDetail(it) })
             }
