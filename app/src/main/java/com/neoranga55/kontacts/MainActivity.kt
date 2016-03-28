@@ -3,11 +3,10 @@ package com.neoranga55.kontacts
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import kotlinx.android.synthetic.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.async
-import org.jetbrains.anko.ctx
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,11 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recycler.layoutManager = GridLayoutManager(ctx, 2)
+        recycler.layoutManager = GridLayoutManager(this, 2)
 
         // Anko asynchronous
-        async {
-            val contacts = RetrieveContacts().execute(ctx)
+        async() {
+            val contacts = RetrieveContacts().execute(baseContext)
             uiThread {
                 recycler.adapter = ContactsAdapter(contacts, { navigateToDetail(it) })
             }
@@ -29,6 +28,6 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToDetail(contact: Contact) {
         startActivity<DetailActivity>(
                 DetailActivity.EXTRA_NAME to contact.name,
-                Pair(DetailActivity.EXTRA_IMAGE, contact.imageUrl))
+                DetailActivity.EXTRA_IMAGE to contact.imageUrl)
     }
 }
